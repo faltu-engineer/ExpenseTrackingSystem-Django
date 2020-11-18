@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} | ExpenseViewer {% endblock %}
+
+{% block content %}
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{object.desc}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">in {{ object.group.name }}</h6>
+    <p class="card-text">{{ object.amount }}</p>
+      <p class="card-text">Added by: {{ object.added_by }}</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+{% endblock %}

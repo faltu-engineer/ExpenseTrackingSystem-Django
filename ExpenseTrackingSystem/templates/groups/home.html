@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} | Home {% endblock %}
+
+{% block content %}
+<p>Welcome to Expense Tracking System</p>
+    <ul>
+    {% for g in groups %}
+        <a href="/groups/{{g.group.id}}/">
+        <div class="card">
+          <div class="card-body">
+            {{ g }} ({{ total_expense|floatformat:2 }})
+          </div>
+        </div>
+        </a>
+    {% endfor %}
+    </ul>
+{% endblock %}

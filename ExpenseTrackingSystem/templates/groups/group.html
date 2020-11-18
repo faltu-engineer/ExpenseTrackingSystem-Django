@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} | Home {% endblock %}
+
+{% block content %}
+    <p>Here are the list of all the expense in this group. Total Expense of this group is {{ total_expense }}</p>
+    <a href="/expense/add/{{ current_group.id }}/"> <button class="btn btn-primary"> Add Expense </button></a>
+    <a href="/"> <button class="btn btn-success"> Home </button></a>
+    <br><br>
+    <div class="row">
+    {% for e in expenses %}
+        <div class="container py-2">
+                 <div class="card p-2">
+                    <a class="card-block stretched-link text-decoration-none" href="/expense/view/{{ e.id }}/">
+                       <h4 class="card-title">{{e.desc}}</h4>
+                    <div class="col-md-6 text-center">
+                        <span class="float-md-left">paid by {% if request.user == e.added_by %} You
+                       {% else %}
+                            {{ e.added_by }}
+                       {% endif %}</span>
+                    <br>
+                    <span class="float-md-left"><small class="text-muted">Amount: {{ e.amount }}</small></span>
+                    </div>
+                           <div class="col-md-12 text-center">
+                               {% for i in e|filter_user:request.user %}
+                                <span class="float-md-right">Your part: {{ i.amount|floatformat:2 }}</span>
+                               {% endfor %}
+                           </div>
+                    </a>
+                 </div>
+              </div>
+    {% empty %}
+        Sorry No expenses added in this group yet.
+    {% endfor %}
+        </div>
+
+{% endblock %}
