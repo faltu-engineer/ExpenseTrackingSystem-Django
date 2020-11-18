@@ -5,6 +5,7 @@ I have attached few screenshots.
 
 ## Working
 we can create new groups from admin console. 
+Group I have shown in images has 4 participants. 
 
 ### Feature of product
 1. we add expense into site and it can automatically distribute the money and add them into wallets. 
